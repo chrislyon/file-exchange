@@ -3,14 +3,14 @@ width:500px;
 }
 
 header {
-background:yellow;
+background:#A0A0A0;
 }
 
 #content {
-background:green;
+background:#C0C0C0;
 }
 
 footer{
-background:gray;
+background:#B0B0B0;
 }
 
