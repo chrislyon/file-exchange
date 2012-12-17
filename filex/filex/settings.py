@@ -7,8 +7,10 @@ ADMINS = (
      ('chris', 'chris@example.com'),
 )
 
-BASE_DIR = '/root/env/filex'
+## 2 env de dev
 BASE_DIR = '/home/chris/Bureau/DVP/python/file-exchange/filex'
+BASE_DIR = '/root/env/file-exchange/filex'
+
 MANAGERS = ADMINS
 
 DATABASES = {

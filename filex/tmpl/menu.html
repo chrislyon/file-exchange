@@ -5,13 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <pre> 
-    Page d'accueil
 
-    Vous devez vous connecter pour continuer 
+<ul>
+    {% for item, label in menu_items %}
+    <li {% if forloop.last %} class='last'{% endif %}>
+        <a href="/{{ item }}">{{ label }}</a>
+    </li>
+    {% endfor %}
+</ul>
 
-    => Acces à l'application : <a href=/menu>Menu</a>
-    </pre>
 
 {% endblock %}
 
