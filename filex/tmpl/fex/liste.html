@@ -1,0 +1,17 @@
+{% extends "tmpl/fex/base.html" %}
+
+{% block content %}
+
+    <h1> LISTE </h1>
+    <br />
+    <table>
+        {% for entite in all_e %}
+        <tr>
+            <td>{{ entite.codent }}</td> <td>{{ entite.noment }}</td> <td>{{ entite.typent }}</td>
+            <td> <a href={{entite.id}}>Voir</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br />
+
+{% endblock %}

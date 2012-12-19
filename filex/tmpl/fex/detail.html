@@ -1,0 +1,23 @@
+{% extends "tmpl/fex/base.html" %}
+
+{% block content %}
+
+    <h1> Entite ID : {{ entite.id }} </h1>
+    <br />
+    <table>
+        <tr>
+            <td>Code Entite</td> <td>{{ entite.codent }}</td>
+        </tr>
+        <tr>
+            <td>Nom Entite</td> <td>{{ entite.noment }}</td>
+        </tr>
+        <tr>
+            <td>Description</td> <td>{{ entite.description }}</td>
+        </tr>
+        <tr>
+            <td>Type Entite</td> <td>{{ entite.typent }}</td>
+        </tr>
+    </table>
+    <br />
+
+{% endblock %}

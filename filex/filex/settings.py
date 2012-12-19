@@ -9,7 +9,7 @@ ADMINS = (
 
 ## 2 env de dev
 BASE_DIR = '/home/chris/Bureau/DVP/python/file-exchange/filex'
-BASE_DIR = '/root/env/file-exchange/filex'
+#BASE_DIR = '/root/env/file-exchange/filex'
 
 MANAGERS = ADMINS
 
@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'fex',
 )
 
 # A sample logging configuration. The only tangible logging

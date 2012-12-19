@@ -1,0 +1,8 @@
+[
+    {"pk": "SRA", "model": "fex.entiteclass", 
+        "fields": {"typent": "ROOT", "description": "Entite RACINE", "noment": "SRA INFORMATIQUE"}}, 
+    {"pk": "CLI1", "model": "fex.entiteclass", 
+        "fields": {"typent": "TIERS", "description": "Le premier ", "noment": "Client No 1"}},
+    {"pk": "CLI2", "model": "fex.entiteclass", 
+        "fields": {"typent": "TIERS", "description": "Le deuxieme", "noment": "Client No 2"}}
+    ]

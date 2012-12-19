@@ -29,7 +29,7 @@ def menu(request):
     PUB_DATE = d.strftime("%d/%m/%Y %X")
 
     menu = [
-        ('gesfic' , 'Gestions des Echanges de fichiers'),
+        ('fex/' , 'Gestions des Echanges de fichiers'),
         ('put_file' , 'Déposer un fichier'),
         ('get_file' , 'Récuperer un fichier'),
         ('param' , 'Paramètre Généraux'),
@@ -41,9 +41,6 @@ def menu(request):
         'menu_items' : menu
         })
     return HttpResponse(t.render(c))
-
-def gesfic(request):
-    return HttpResponse("NON IMPLEMENTEE : gesfic")
 
 def put_file(request):
     return HttpResponse("NON IMPLEMENTEE : put_file")
