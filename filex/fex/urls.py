@@ -9,5 +9,6 @@ urlpatterns = patterns('fex.views',
 
     # 
     url(r'^$', 'fex_liste', name='ges_fex' ),
+    url(r'^cr$', 'fex_create', name='fex_create' ),
     url(r'^(?P<fex_id>\d+)/$', 'fex_detail', name='fex_detail' ),
 )

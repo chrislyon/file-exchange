@@ -1,0 +1,13 @@
+{% extends "tmpl/fex/base.html" %}
+
+{% block content %}
+
+    <h1> CREATE FEX </h1>
+    <br />
+    <form action='/fex/cr' method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Validation" />
+    </form>
+
+{% endblock %}

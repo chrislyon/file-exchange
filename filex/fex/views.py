@@ -4,8 +4,11 @@
 from django.template import Context, loader
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, get_list_or_404
+from django.shortcuts import render
+from django.shortcuts import HttpResponseRedirect
 
 from models import EntiteClass
+from models import EntiteForm
 
 import datetime
 
@@ -46,3 +49,14 @@ def fex_detail(request, fex_id):
         'entite' : e,
         })
     return HttpResponse(t.render(c))
+
+def fex_create(request):
+    if request.method == 'POST':
+        form = EntiteForm(request.POST)
+        if form.is_valid():
+
+            return HttpResponseRedirect('fex/')
+    else:
+        form = EntiteForm()
+
+    return render( request, 'tmpl/fex/fex_create.html', { 'form' : form } )
