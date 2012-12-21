@@ -8,8 +8,8 @@ ADMINS = (
 )
 
 ## 2 env de dev
-#BASE_DIR = '/home/chris/Bureau/DVP/python/file-exchange/filex'
-BASE_DIR = '/root/tmp/file-exchange/filex'
+BASE_DIR = '/home/chris/Bureau/DVP/python/file-exchange/filex'
+#BASE_DIR = '/root/tmp/file-exchange/filex'
 
 MANAGERS = ADMINS
 
