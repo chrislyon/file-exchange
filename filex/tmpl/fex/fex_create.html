@@ -4,10 +4,27 @@
 
     <h1> CREATE FEX </h1>
     <br />
-    <form action='/fex/cr' method="post">
+    <!-- 
+        Pour la form :
+        => donner un id
+        => grouper les champs par fieldsets qui peut avoir un titre, balise legend
+        => les champs sont dans une ordered list ol et mis grace a form.as_ul 
+    -->
+    <form id="base_form" action='/fex/cr' method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Validation" />
+    <fieldset>
+    <legend>Création d'un Fex</legend>
+    <ol>
+    {{ form.as_ul }}
+    </ol>
+    </fieldset>
+
+    <!-- Idem pour les buttons 
+         un fieldset + l'utilisation de button au lieu de input
+    -->
+    <fieldset>
+    <button type="submit" /> Validation </button>
+    </fieldset>
     </form>
 
 {% endblock %}

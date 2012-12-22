@@ -22,7 +22,7 @@ class EntiteClass(models.Model):
         return "%s : %s" % (self.codent, self.noment)
 
 class EntiteForm(forms.Form):
-    codent = forms.CharField(label='Code Entité : ',max_length=20, required=True)
-    noment = forms.CharField(label='Nom Entité : ',max_length=40, required=False)
-    description = forms.MultiValueField(label='Description : ',required=False, widget=forms.Textarea)
-    typent = forms.ChoiceField( label='Type Entité : ',choices=TYPE_ENT, required=False )
+    codent = forms.CharField(label='Code Entité ',max_length=20, required=True)
+    noment = forms.CharField(label='Nom Entité ',max_length=40, required=False)
+    description = forms.MultiValueField(label='Description ',required=False, widget=forms.Textarea)
+    typent = forms.ChoiceField( label='Type Entité ',choices=TYPE_ENT, required=False )

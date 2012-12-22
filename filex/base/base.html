@@ -2,6 +2,7 @@
 <html lang="en">
         <head>
                 <!-- Les feuilles de style doivent etre dans static/style -->
+                {% block style %} {%endblock %}
                 <link rel="stylesheet" href="/static/style/style.css" />
                 <title>{% block title %}BASE HTML{% endblock %}</title>
         </head>
