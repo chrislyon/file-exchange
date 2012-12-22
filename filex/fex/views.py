@@ -11,6 +11,7 @@ from models import EntiteClass
 from models import EntiteForm
 
 import datetime
+import pdb
 
 def test_fex_liste(request):
     return HttpResponse("NON IMPLEMENTEE : ges_fex => liste ")
@@ -25,7 +26,7 @@ def fex_liste(request):
     d = datetime.datetime.now()
     PUB_DATE = d.strftime("%d/%m/%Y %X")
     e = EntiteClass.objects.all()
-    e = get_list_or_404(EntiteClass, typent='TIERS')
+    #e = get_list_or_404(EntiteClass, typent='TIERS')
 
     c = Context({ 
         'PUB_DATE':PUB_DATE, 
@@ -52,11 +53,22 @@ def fex_detail(request, fex_id):
 
 def fex_create(request):
     if request.method == 'POST':
-        form = EntiteForm(request.POST)
-        if form.is_valid():
-
-            return HttpResponseRedirect('fex/')
+        ## Bouton VALID
+        if request.POST['VALID'] == 'VALID':
+            #pdb.set_trace()
+            f = EntiteForm(request.POST)
+            if f.is_valid():
+                new_ent = EntiteClass()
+                new_ent.codent = f.cleaned_data['codent']
+                new_ent.noment = f.cleaned_data['noment']
+                new_ent.description = f.cleaned_data['description']
+                new_ent.typent = f.cleaned_data['typent']
+                new_ent.save()
+                return HttpResponseRedirect('/fex')
+        else:
+            ## Bouton ANNUL
+            return HttpResponseRedirect('/fex')
     else:
-        form = EntiteForm()
+        f = EntiteForm()
 
-    return render( request, 'tmpl/fex/fex_create.html', { 'form' : form } )
+    return render( request, 'tmpl/fex/fex_create.html', { 'form' : f } )

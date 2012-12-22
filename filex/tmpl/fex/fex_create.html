@@ -23,8 +23,11 @@
          un fieldset + l'utilisation de button au lieu de input
     -->
     <fieldset>
-    <button type="submit" /> Validation </button>
+    <button type="submit" name="VALID" value="VALID"/> Validation </button>
+    <button type="submit" name="VALID" value="ANNUL"/> Annulation </button>
     </fieldset>
     </form>
+
+    {{ form.errors }}
 
 {% endblock %}
