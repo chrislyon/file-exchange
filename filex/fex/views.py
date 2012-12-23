@@ -10,6 +10,8 @@ from django.shortcuts import HttpResponseRedirect
 from models import EntiteClass
 from models import EntiteForm
 
+from django import forms
+
 import datetime
 import pdb
 
@@ -59,12 +61,18 @@ def fex_create(request):
             f = EntiteForm(request.POST)
             if f.is_valid():
                 new_ent = EntiteClass()
-                new_ent.codent = f.cleaned_data['codent']
-                new_ent.noment = f.cleaned_data['noment']
-                new_ent.description = f.cleaned_data['description']
-                new_ent.typent = f.cleaned_data['typent']
-                new_ent.save()
-                return HttpResponseRedirect('/fex')
+                ## 
+                new_codent = f.cleaned_data['codent']
+                q = EntiteClass.objects.get(codent=new_codent)
+                if q:
+                    f.errors['__all__'] = f.error_class(["Cle Deja Existante"])
+                else:
+                    new_ent.noment = f.cleaned_data['noment']
+                    new_ent.description = f.cleaned_data['description']
+                    new_ent.typent = f.cleaned_data['typent']
+                    new_ent.save()
+                    return HttpResponseRedirect('/fex')
+
         else:
             ## Bouton ANNUL
             return HttpResponseRedirect('/fex')

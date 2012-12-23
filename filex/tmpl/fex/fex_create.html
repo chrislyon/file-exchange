@@ -19,6 +19,10 @@
     </ol>
     </fieldset>
 
+    <div id="error">
+        {{ field.errors }}
+    </div>
+
     <!-- Idem pour les buttons 
          un fieldset + l'utilisation de button au lieu de input
     -->
@@ -27,7 +31,5 @@
     <button type="submit" name="VALID" value="ANNUL"/> Annulation </button>
     </fieldset>
     </form>
-
-    {{ form.errors }}
 
 {% endblock %}

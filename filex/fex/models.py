@@ -2,6 +2,7 @@
 
 from django.db import models
 from django import forms
+from django.views.generic import CreateView
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -23,6 +24,11 @@ class EntiteClass(models.Model):
 
 class EntiteForm(forms.Form):
     codent = forms.CharField(label='Code Entité ',max_length=20)
-    noment = forms.CharField(label='Nom Entité ',max_length=40, required=False)
-    description = forms.CharField(label='Description ',required=False, widget=forms.Textarea)
-    typent = forms.ChoiceField( label='Type Entité ',choices=TYPE_ENT, required=False )
+    noment = forms.CharField(label='Nom Entité ',max_length=40)
+    description = forms.CharField(label='Description ', widget=forms.Textarea)
+    typent = forms.ChoiceField( label='Type Entité ',choices=TYPE_ENT)
+
+class EntCreateView(CreateView):
+    form_class = EntiteForm
+    template_name = 'fex/Entite_new.html'
+    success_url = '/fex'
