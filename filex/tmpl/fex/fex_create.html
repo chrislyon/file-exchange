@@ -1,9 +1,11 @@
 {% extends "tmpl/fex/base.html" %}
 
+{% block header %}
+    <h1> CREATE FEX </h1>
+{% endblock %}
+
 {% block content %}
 
-    <h1> CREATE FEX </h1>
-    <br />
     <!-- 
         Pour la form :
         => donner un id
@@ -27,8 +29,13 @@
          un fieldset + l'utilisation de button au lieu de input
     -->
     <fieldset>
+    <table>
+    <tr><td>
     <button type="submit" name="VALID" value="VALID"/> Validation </button>
+    </td> <td>
     <button type="submit" name="VALID" value="ANNUL"/> Annulation </button>
+    </td></tr>
+    </table>
     </fieldset>
     </form>
 

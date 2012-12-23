@@ -28,7 +28,19 @@ class EntiteForm(forms.Form):
     description = forms.CharField(label='Description ', widget=forms.Textarea)
     typent = forms.ChoiceField( label='Type Entité ',choices=TYPE_ENT)
 
-class EntCreateView(CreateView):
-    form_class = EntiteForm
-    template_name = 'fex/Entite_new.html'
-    success_url = '/fex'
+
+class UtilisateurClass(models.Model):
+    codusr = models.CharField(_(u'Code Utilisateur'),max_length=20, unique=True)
+    nomusr = models.CharField(_(u'Nom Utilisateur'),max_length=40)
+    email_usr = models.EmailField(_(u'Email'))
+    tiers_usr = models.ForeignKey(EntiteClass)
+
+    def __unicode__(self):
+        return "%s : %s" % (self.codusr, self.nomusr)
+
+class UtilisateurForm(forms.Form):
+    codusr = forms.CharField(label='Code Utilisateur ',max_length=20)
+    nomusr = forms.CharField(label='Nom Utilisateur ',max_length=40)
+    email_usr = forms.EmailField(label='E-mail ')
+    tiers_usr = forms.CharField(label='Tiers ',max_length=20)
+

@@ -4,12 +4,24 @@ width:800px;
 
 header {
 background:#A0A0A0;
+padding: 20px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
 }
 
 #content {
 background:#C0C0C0;
+padding: 10px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
 }
 
 footer{
 background:#B0B0B0;
+padding: 20px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
 }

@@ -1,9 +1,10 @@
 {% extends "tmpl/fex/base.html" %}
 
+{% block header %}
+    <h1> LISTE DES ENTITES / TIERS </h1>
+{% endblock %}
 {% block content %}
 
-    <h1> LISTE </h1>
-    <br />
     <table>
         {% for entite in all_e %}
         <tr>

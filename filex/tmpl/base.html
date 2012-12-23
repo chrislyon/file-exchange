@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+    <h1> {{ BASE FEX }}<h1>
+{% endblock %}
+
+{% block header %}
+    <h1> {{ TITRE_PAGE }}<h1>
+{% endblock %}
+
+{% block footer %}
+<div id="pubdate">
+    Date du publication : {{ PUB_DATE }}
+</div>
+<time datetime="{{ PUB_DATE }}" pubdate="pubdate"></time>
+{% endblock %}

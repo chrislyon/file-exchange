@@ -4,16 +4,24 @@
 from django.template import Context, loader
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, get_list_or_404
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.shortcuts import HttpResponseRedirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from models import EntiteClass
 from models import EntiteForm
+
+from models import UtilisateurClass
+from models import UtilisateurForm
 
 from django import forms
 
 import datetime
 import pdb
+
+def get_pub_date():
+    d = datetime.datetime.now()
+    return d.strftime("%d/%m/%Y %X")
 
 def test_fex_liste(request):
     return HttpResponse("NON IMPLEMENTEE : ges_fex => liste ")
@@ -79,4 +87,43 @@ def fex_create(request):
     else:
         f = EntiteForm()
 
-    return render( request, 'tmpl/fex/fex_create.html', { 'form' : f } )
+    return render( request, 'tmpl/fex/fex_create.html', { 'form' : f, 'PUB_DATE':get_pub_date() } )
+
+def fex_usr_liste(request):
+    obj_list = UtilisateurClass.objects.all()
+    paginator = Paginator(obj_list, 10)
+
+    page = request.GET.get('page')
+    try:
+        objs = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        objs = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        objs = paginator.page(paginator.num_pages)
+
+    return render_to_response('tmpl/fex/list_usr.html', {"objs": objs})
+
+## --------------------------------
+## Liste Standard avec pagination
+## --------------------------------
+def fex_std_liste(request, model, template, p=10):
+    d = datetime.datetime.now()
+    PUB_DATE = d.strftime("%d/%m/%Y %X")
+
+    obj_list = model.objects.all()
+    paginator = Paginator(obj_list, p)
+
+    page = request.GET.get('page')
+    try:
+        objs = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        objs = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        objs = paginator.page(paginator.num_pages)
+
+    return render_to_response(template, {"objs": objs, 'PUB_DATE':PUB_DATE })
+

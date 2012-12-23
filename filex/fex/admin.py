@@ -2,6 +2,6 @@
 
 from django.contrib import admin
 
-from fex.models import EntiteClass
+from fex.models import EntiteClass, UtilisateurClass
 
 admin.site.register(EntiteClass)
