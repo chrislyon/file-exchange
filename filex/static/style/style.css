@@ -16,6 +16,7 @@ padding: 10px;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
 border-radius: 5px;
+min-height: 300Px;
 }
 
 footer{

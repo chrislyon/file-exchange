@@ -1,0 +1,42 @@
+{% extends "tmpl/tst/base.html" %}
+
+{% block header %}
+    <h1> LISTE DES TST</h1>
+{% endblock %}
+{% block content %}
+
+    <a href="/tst/create">Nouveau</a>
+    <br />
+    <table>
+        {% for obj in objs %}
+        {# Each "obj" is a model object. #}
+        <tr>
+            <td>{{ obj.codent|upper }}</td>
+            <td>{{ obj.noment|upper }}</td>
+            <td>{{ obj.typent }}</td>
+            <td><a href="{{ B_HREF }}/modif/{{ obj.id }}">Modif</a></td>
+            <td><a href="{{ B_HREF }}/delete/{{ obj.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br />
+
+    <div class="pagination">
+    <span class="step-links">
+    {% if objs.has_previous %}
+    <a href="?page={{ objs.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current">
+    Page {{ objs.number }} of {{ objs.paginator.num_pages }}.
+    </span>
+
+    {% if objs.has_next %}
+    <a href="?page={{ objs.next_page_number }}">next</a>
+    {% endif %}
+    </span>
+    </div>
+    <br />
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "tmpl/tst/base.html" %}
+
+{% block header %}
+    <h1> MODIF TST </h1>
+{% endblock %}
+
+{% block content %}
+
+    <!-- 
+        Pour la form :
+        => donner un id
+        => grouper les champs par fieldsets qui peut avoir un titre, balise legend
+        => les champs sont dans une ordered list ol et mis grace a form.as_ul 
+    -->
+    <form id="base_form" action='/tst/modif/{{ ENREG}}' method="post">
+    {% csrf_token %}
+    <fieldset>
+    <legend>Modif d'un tst</legend>
+    <ol>
+    {{ form.as_ul }}
+    </ol>
+    </fieldset>
+
+    <div id="error">
+        {{ field.errors }}
+    </div>
+
+    <!-- Idem pour les buttons 
+         un fieldset + l'utilisation de button au lieu de input
+    -->
+    <fieldset>
+    <table>
+    <tr><td>
+    <button type="submit" name="VALID" value="VALID"/> Validation </button>
+    </td> <td>
+    <button type="submit" name="VALID" value="ANNUL"/> Annulation </button>
+    </td></tr>
+    </table>
+    </fieldset>
+    </form>
+
+{% endblock %}

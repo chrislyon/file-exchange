@@ -27,6 +27,8 @@ urlpatterns = patterns('',
     ## Gestion des fichiers Ex
     url(r'^fex/', include('fex.urls')),
     #url(r'^fex/(?P<fex_id>\d+)/$', 'fex.views.fex_detail', name='fex_detail' ),
+    ## TEST
+    url(r'^tst/', include('tst.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
