@@ -1,0 +1,21 @@
+{% extends "tmpl/tst/base.html" %}
+{% block header %}
+    <h1> EFFACEMENT </h1>
+{% endblock %}
+
+{% block content %}
+<h1>Êtes-vous sûr de vouloir supprimer cette URL ?</h1>
+
+<form method="post" action="">
+
+    {% csrf_token %}  <!-- On prend bien soin d'ajouter le csrf_token -->
+
+    <fieldset>
+    <legend>Création d'un tst</legend>
+    <p> {{ obj.codent }} {{ obj.noment }}</p>
+    </fieldset>
+
+    <input type="submit" value="Oui, supprime moi ça" /> - <a href="{% url url_liste %}">Pas trop chaud en fait</a>
+</form>
+
+{% endblock %}

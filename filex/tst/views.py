@@ -8,6 +8,9 @@ from django.shortcuts import render, render_to_response
 from django.shortcuts import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from django.views.generic import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+
 from models import tstClass
 from models import tstForm
 
@@ -17,6 +20,20 @@ import pdb
 def get_pub_date():
     d = datetime.datetime.now()
     return d.strftime("%d/%m/%Y %X")
+
+## --------------------------------
+## Effacement avec ClassBase View
+## --------------------------------
+class URLDelete(DeleteView):
+    model = tstClass
+    context_object_name = "obj"
+    template_name = 'tmpl/tst/tst_delete.html'
+    #success_url = reverse_lazy('tst/')
+    success_url = '/tst/'
+
+    def get_object(self, queryset=None):
+        enreg_id = self.kwargs.get('code', None)
+        return get_object_or_404(tstClass, id=enreg_id)
 
 ## -----------------
 ## Modif d'un enreg
